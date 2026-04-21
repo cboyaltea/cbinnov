@@ -317,34 +317,52 @@ p { margin: 0; }
 }
 .brand-card {
   position: relative;
-  padding: 36px 32px 28px;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  background:
-    radial-gradient(400px 200px at 100% 0%, rgba(0, 224, 198, 0.08), transparent 60%),
-    linear-gradient(180deg, var(--surface), var(--surface-2));
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
   overflow: hidden;
   transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
 }
-.brand-card::before {
+.brand-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+.brand-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0a0f18;
+}
+.brand-card-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0, 224, 198, 0), rgba(78, 161, 255, 0));
-  opacity: 0;
-  transition: opacity 0.4s var(--ease);
+  background: linear-gradient(180deg, transparent 55%, rgba(10, 15, 24, 0.5) 100%);
+  pointer-events: none;
 }
-.brand-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-.brand-card:hover::before { opacity: 1; }
+.brand-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.brand-card:hover .brand-card-media img { transform: scale(1.04); }
+
+.brand-card-body {
+  padding: 28px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .brand-card-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
-  position: relative;
+  margin-bottom: 14px;
 }
 .brand-card-head h3 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -359,15 +377,14 @@ p { margin: 0; }
 .brand-card p {
   color: var(--text-dim);
   font-size: 15px;
-  margin-bottom: 28px;
-  position: relative;
+  margin-bottom: 24px;
+  flex: 1;
 }
 .brand-card-url {
   font-family: "JetBrains Mono", monospace;
   font-size: 12px;
   color: var(--text-mute);
   letter-spacing: 0.04em;
-  position: relative;
 }
 
 /* ============ Contact ============ */
